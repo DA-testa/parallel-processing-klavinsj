@@ -10,13 +10,9 @@ def parallel_processing(n, m, data):
         laiki.append(0)
 
     for i in range(m):
-        thread = 0
-        etime = laiki[0]
-        for i in range(1, n):
-            if laiki[i] < etime:
-                thread = i
-                etime = laiki[i]
-        laiki[thread] = laiki[thread] + data[i]
+        etime = min(laiki)
+        thread = laiki.index(etime)
+        laiki[thread] = laiki[thread] + data[i]  
         output.append((thread, etime))
 
     return output
